@@ -5,10 +5,6 @@ import { localisedStrings } from 'src/i18n/en/localised-strings';
 
 @Injectable()
 export abstract class MessageService {
-  /* sendLanguageSelectionMessage(from: any, selectLanguageMessage: string, languageButtons: { text: string; value: string; }[]) {
-    throw new Error('Method not implemented.'); */
-  // }
-  
   async prepareWelcomeMessage() {
     return localisedStrings.welcomeMessage;
   }
@@ -17,6 +13,7 @@ export abstract class MessageService {
   }
 
   async sendMessage(baseUrl: string, requestData: any, token: string) {
+    
     try {
       const response = await axios.post(baseUrl, requestData, {
         headers: {
@@ -31,7 +28,5 @@ export abstract class MessageService {
   }
 
   abstract sendWelcomeMessage(from: string, language: string);
-  abstract sendLanguageSelectionMessage(from: string);
   abstract sendLanguageChangedMessage(from: string, language: string);
-  
 }

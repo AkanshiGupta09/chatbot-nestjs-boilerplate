@@ -1,13 +1,14 @@
 import { IsString, IsNumber, IsOptional } from 'class-validator';
 
 export class User {
-  @IsString()
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @Column({ unique: false })
   mobileNumber: string;
 
   @IsString()
   language: string;
-
-  @IsString()
-  Botid: string;
-
-  }
+  @Column()
+  botID: string;
+}
